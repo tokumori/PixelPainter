@@ -3,14 +3,14 @@ function createGrid (rows, x, y) {
     grid.className = 'grid';
 
   var colElem = document.createElement('div');
-  for (var i = 0; i < rows; i++) {
-    if (rows >= 0) {
-      var rowElem = document.createElement('div');
-      rowElem.className = 'row';
-      grid.appendChild(rowElem);
-    } else {
+    if (rows < 0 || typeof rows !== 'number') {
       throw new Error('Kaboom');
+    } else {
+      for (var i = 0; i < rows; i++) {
+        var rowElem = document.createElement('div');
+        rowElem.className = 'row';
+        grid.appendChild(rowElem);
+      }
     }
-  }
   return grid;
 }
