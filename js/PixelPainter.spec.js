@@ -27,7 +27,14 @@ var should = chai.should();
   });
 
   describe('columns', function () {
-    it('should equal the number of rows if no argument is provided', function () {
+    it('should equal the number of rows if NO argument is provided', function () {
       expect(createGrid(1).firstChild.children).to.have.length(1);
+      expect(createGrid(10).firstChild.children).to.have.length(10);
+    });
+    it('should return the number of rows provided by the argument', function () {
+      expect(createGrid(1, 10).children).to.have.length(1);
+      expect(createGrid(1, 10).firstChild.children).to.have.length(10);
+      expect(createGrid(10, 5).children).to.have.length(10);
+      expect(createGrid(10, 5).firstChild.children).to.have.length(5);
     });
   });
