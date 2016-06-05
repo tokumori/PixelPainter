@@ -41,8 +41,9 @@ function addAttributes (element, attributes) {
   }
 }
 
-
-
+var myGrid = createGrid(10, 10, {class: 'grid'});
+console.log(myGrid);
+document.getElementById('pixelPainter').appendChild(myGrid);
 
 // function paintCell (event) {
 //   this.style.backgroundColor = chosenColor;
