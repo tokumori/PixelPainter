@@ -47,7 +47,11 @@ document.getElementById('pixelPainter').appendChild(myGrid);
 var chosenColor = '#000000';
 var columns = document.querySelectorAll('.grid .grid');
 Array.prototype.forEach.call(columns, function (column) {
-  column.addEventListener("mousedown", paintCell);
+  column.addEventListener("mousedown", paintDrag);
+  });
+
+Array.prototype.forEach.call(columns, function (column) {
+  column.addEventListener("mouseup", paintStop);
   });
 
 var buttons = document.querySelectorAll('button');
@@ -72,4 +76,21 @@ function changeColor () {
 
 function paintCell (event) {
   event.target.style.backgroundColor = chosenColor;
+}
+
+function paintDrag () {
+  Array.prototype.forEach.call(columns, function (column) {
+  column.addEventListener("mousemove", paintCell);
+  });
+}
+
+function paintStop() {
+  Array.prototype.forEach.call(columns, function (column) {
+  column.removeEventListener("mousemove", paintCell);
+  });
+
+}
+
+function paintDelete() {
+  chosenColor = null;
 }
