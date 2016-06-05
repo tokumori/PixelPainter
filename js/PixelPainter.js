@@ -3,20 +3,24 @@ function createGrid (numRows, numCol, attr) {
     if (numRows < 0 || typeof numRows !== 'number') {
       throw new TypeError('Kaboom');
     } else {
-      if (numCol === undefined) {
-        numCol = numRows;
-      }
-      if (attr === undefined) {
+      if (attr === undefined && typeof numCol === 'object') {
         attr = numCol;
+      }
+      if (typeof numCol !== 'number') {
+        numCol = numRows;
       }
       for (var i = 0; i < numRows; i++) {
         var rowElem = document.createElement('div');
-        addAttributes(rowElem, attr);
+        if (typeof attr === 'object') {
+          addAttributes(rowElem, attr);
+        }
         grid.appendChild(rowElem);
         var colElem;
           for (var k = 0; k < numCol; k++) {
             colElem = document.createElement('div');
-            addAttributes(colElem, attr);
+            if (typeof attr === 'object'){
+              addAttributes(colElem, attr);
+            }
             rowElem.appendChild(colElem);
           }
       }
@@ -35,9 +39,11 @@ function addAttributes (element, attributes) {
   } else {
     throw new TypeError('オブジェクトを入れてください');
   }
-
 }
 
+
+
+
 // function paintCell (event) {
-//   this.syle.backgroundColor = chosenColor;
+//   this.style.backgroundColor = chosenColor;
 // }
