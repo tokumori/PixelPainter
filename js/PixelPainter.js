@@ -42,9 +42,34 @@ function addAttributes (element, attributes) {
 }
 
 var myGrid = createGrid(10, 10, {class: 'grid'});
-console.log(myGrid);
 document.getElementById('pixelPainter').appendChild(myGrid);
 
-// function paintCell (event) {
-//   this.style.backgroundColor = chosenColor;
-// }
+var chosenColor = '#000000';
+var columns = document.querySelectorAll('.grid .grid');
+Array.prototype.forEach.call(columns, function (column) {
+  column.addEventListener("mousedown", paintCell);
+  });
+
+var buttons = document.querySelectorAll('button');
+var redButton = buttons[0];
+var greenButton = buttons[1];
+var blueButton = buttons[2];
+var yellowButton = buttons[3];
+var pinkButton = buttons[4];
+
+var redButtonAttr = {
+  className: 'button',
+  style: 'width: 80px; height: 20px;',
+  onclick: changeColor,
+  specificColor: 'FF0000'
+};
+
+addAttributes(redButton, redButtonAttr);
+
+function changeColor () {
+  chosenColor = this.specificColor;
+}
+
+function paintCell (event) {
+  event.target.style.backgroundColor = chosenColor;
+}
