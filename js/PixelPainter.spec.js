@@ -38,3 +38,29 @@ var should = chai.should();
       expect(createGrid(10, 5).firstChild.children).to.have.length(5);
     });
   });
+
+  describe('attributes', function () {
+    it('should apply attributes to all elements if NO column argument is provided', function () {
+      expect(createGrid(1, {}).children).to.have.length(1);
+      expect(createGrid(1, {}).firstChild.children).to.have.length(1);
+      var testGrid = createGrid(10, {class: 'grid'});
+      var testGrid2 = createGrid(10, {class: 'grid', style: 'background-color: black'});
+      for (var i = 0; i < testGrid.children.length; i++) {
+        expect(testGrid.children[i].hasAttribute('class')).to.equal(true);
+        expect(testGrid.firstChild.children[i].hasAttribute('class')).to.equal(true);
+        expect(testGrid2.children[i].hasAttribute('class')).to.equal(true);
+        expect(testGrid2.children[i].hasAttribute('style')).to.equal(true);
+        expect(testGrid2.firstChild.children[i].hasAttribute('class')).to.equal(true);
+        expect(testGrid2.firstChild.children[i].hasAttribute('style')).to.equal(true);
+      }
+    });
+    it('should apply attributes to all rows and columns if a column argument is provided', function () {
+      var colTestGrid = createGrid(10, 5, {class: 'grid'});
+      expect(colTestGrid.children).to.have.length(10);
+      expect(colTestGrid.firstChild.children).to.have.length(5);
+      for (var i = 0; i < colTestGrid.children; i++) {
+        expect(colTestGrid.children[i].hasAttribute('class')).to.equal(true);
+        expect(colTestGrid.firstChild.children[i].hasAttribute('class')).to.equal(true);
+      }
+    })
+  });
