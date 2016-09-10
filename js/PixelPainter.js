@@ -73,9 +73,8 @@ Array.prototype.forEach.call(colorColumns, function (colorColumn, index) {
 });
 
 var myGrid = createGrid(10, 10, {class: 'grid'});
+var grid = document.getElementById('pixelPainter');
 document.getElementById('pixelPainter').appendChild(myGrid);
-
-
 
 var columns = document.querySelectorAll('.grid .grid');
 Array.prototype.forEach.call(columns, function (column) {
@@ -84,6 +83,10 @@ Array.prototype.forEach.call(columns, function (column) {
 
 Array.prototype.forEach.call(columns, function (column) {
   column.addEventListener("mouseup", paintStop);
+  });
+
+Array.prototype.forEach.call(columns, function (column) {
+  column.addEventListener("click", paintReplace);
   });
 
 var buttons = document.querySelectorAll('button');
@@ -100,6 +103,7 @@ addAttributes(eraseButton, eraseButtonAttr);
 
 function changeColor () {
   chosenColor = this.specificColor;
+  console.log(chosenColor);
 }
 
 function paintCell (event) {
@@ -108,17 +112,23 @@ function paintCell (event) {
 
 function paintDrag () {
   Array.prototype.forEach.call(columns, function (column) {
-  column.addEventListener("mousemove", paintCell);
+    column.addEventListener("mousemove", paintCell);
   });
 }
 
-function paintStop() {
+function paintStop () {
   Array.prototype.forEach.call(columns, function (column) {
-  column.removeEventListener("mousemove", paintCell);
+    column.removeEventListener("mousemove", paintCell);
   });
 
 }
 
-function paintDelete() {
+function paintDelete () {
   chosenColor = null;
+}
+
+function paintReplace () {
+  Array.prototype.forEach.call(columns, function (column, index) {
+    column.style.backgroundColor = chosenColor;
+  });
 }
