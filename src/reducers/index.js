@@ -1,11 +1,11 @@
 import { combineReducers, compose } from 'redux';
 
 import { default as canvasReducer } from './canvas';
-import { default as palletReducer } from './pallet';
+import { default as paletteReducer } from './palette';
 
 const rootReducer = combineReducers({
   canvas: canvasReducer,
-  pallet: palletReducer
+  palette: paletteReducer
 })
 
 const finalCreateStore = compose(

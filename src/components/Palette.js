@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
 import Pixel from './Pixel';
 
-class Canvas extends Component {
+class Palette extends Component {
   render() {
     const colorsArray = this.props.colors.map((rows, index) => {
       return (
-        <div key={index}>
-          {rows.map((columns, index) => {
-            return (
-              <Pixel
-                key={index}
-                color={columns}
-              />
-            )
-          })}
-        </div>
+        <Pixel
+          key={index}
+          color={rows}
+        />
       )
     })
     return (
-      <div
+      <div className="palette"
         style={
           {
             display: "inline-block",
-            width: "65%"
+            width: "15%",
+            "margin-right": "40px"
           }
         }
       >
@@ -32,4 +27,4 @@ class Canvas extends Component {
   }
 }
 
-export default Canvas;
+export default Palette;
