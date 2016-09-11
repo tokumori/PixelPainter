@@ -10,11 +10,12 @@ class Palette extends Component {
   setColor (color, index) {
     console.log(currentColor);
     if (color !== currentColor) {
-      currentColor = 'blue';
+      currentColor = color;
       console.log(currentColor);
     }
   }
   render() {
+    console.log(this.props);
     const colorsArray = this.props.colors.map((color, index) => {
       return (
         <Pixel
