@@ -6,14 +6,11 @@ class Pixel extends Component {
       <div
         style={
           {
-            backgroundColor: this.props.color,
-            border: "1px solid black",
-            // width: "35px",
-            // height: "35px",
-            // display: "inline-block"
+            backgroundColor: this.props.color
           }
         }
         className="pixel"
+        onClick={this.props.handleClick}
       >
       </div>
     )

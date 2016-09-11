@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import Pixel from './Pixel';
 
+let currentColor;
 class Palette extends Component {
+  constructor (props) {
+    super(props);
+    this.setColor = this.setColor.bind(this);
+  }
+  setColor (color, index) {
+    console.log(currentColor);
+    if (color !== currentColor) {
+      currentColor = 'blue';
+      console.log(currentColor);
+    }
+  }
   render() {
-    const colorsArray = this.props.colors.map((rows, index) => {
+    const colorsArray = this.props.colors.map((color, index) => {
       return (
         <Pixel
           key={index}
-          color={rows}
+          color={color}
+          handleClick= {() => this.setColor(color, index)}
         />
       )
     })

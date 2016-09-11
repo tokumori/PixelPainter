@@ -19,6 +19,7 @@ class Canvas extends Component {
     })
     return (
       <div
+        className="canvas"
         style={
           {
             display: "inline-block",
