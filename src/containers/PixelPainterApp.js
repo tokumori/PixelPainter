@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// import { Pixel, Canvas, Pallet } from '../components';
+import { Pixel, Canvas } from '../components';
 // import { setColor, selectColor, clearCanvas } from '../actions';
 
 function mapStateToProps (state) {
@@ -9,13 +9,10 @@ function mapStateToProps (state) {
 }
 
 class PixelPainterApp extends Component {
-  constructor (props) {
-    super(props);
-  }
   render() {
     return (
       <div>
-        Sup Dawg!
+        <Canvas colors={[['red', 'blue'], ['green', 'yellow']]} />
       </div>
     )
   }
